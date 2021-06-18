@@ -1,24 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import Navbar from "./components/Navbar";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Watched from "./components/Watched";
+import Watchlist from "./components/Watchlist";
+import AddMovie from "./components/AddMovie";
+import HomePage from "./components/Home";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Navbar />
+      <Switch>
+        <Route exact path="/">
+          <HomePage />
+        </Route>
+        <Route exact path="/watchlist">
+          <Watchlist />
+        </Route>
+        <Route exact path="/watched">
+          <Watched />
+        </Route>
+        <Route exact path="/add">
+          <AddMovie />
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 
