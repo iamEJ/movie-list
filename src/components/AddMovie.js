@@ -1,5 +1,8 @@
 import { useState } from "react";
 import styled from "styled-components";
+import MovieCardInSearch from "./MovieCardInSearch";
+import { BiSearchAlt } from "react-icons/bi";
+import { FaTheaterMasks } from "react-icons/fa";
 
 function AddMovie() {
   const [query, setQuery] = useState("");
@@ -26,24 +29,103 @@ function AddMovie() {
 
   return (
     <Wrapper>
+      <h1 className="search-title">
+        Search a movie to add to your watchlist here!
+      </h1>
       <div className="container">
-        <input
-          type="text"
-          placeholder="Enter movie name"
-          value={query}
-          onChange={onChange}
-        />
+        <div className="input-box">
+          <input
+            type="text"
+            placeholder="batman"
+            value={query}
+            onChange={onChange}
+          />
+          <button>
+            <BiSearchAlt />
+          </button>
+        </div>
         {movies.length > 0 &&
           movies.map((movie) => {
-            return <p>{movie.title}</p>;
+            return <MovieCardInSearch key={movie.id} movie={movie} />;
           })}
+      </div>
+      <div className="masks">
+        <FaTheaterMasks />
       </div>
     </Wrapper>
   );
 }
 
 const Wrapper = styled.section`
-  max-width: 1170px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 50px;
+  .container {
+    width: 90%;
+  }
+
+  .search-title {
+    color: #3fd0c9;
+    padding: 20px;
+    font-family: "Nunito", sans-serif;
+    font-size: 32px;
+    text-align: center;
+  }
+
+  .input-box {
+    display: flex;
+    width: 50%;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+
+    input {
+      width: 100%;
+      height: 42px;
+      font-size: 26px;
+      padding-left: 10px;
+      border: 1px solid lightgrey;
+      border-radius: 5px;
+      color: #02353c;
+    }
+
+    button {
+      width: 36px;
+      height: 36px;
+      background: #3fd0c9;
+      margin-left: -40px;
+      border: none;
+      border-radius: 5px;
+      svg {
+        font-size: 24px;
+        color: #fff;
+      }
+    }
+  }
+
+  .masks {
+    color: #efefef;
+    font-size: 140px;
+    margin-top: 40px;
+  }
+  @media (max-width: 1200px) {
+    .input-box {
+      width: 65%;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .input-box {
+      width: 75%;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .input-box {
+      width: 90%;
+    }
+  }
 `;
 
 export default AddMovie;

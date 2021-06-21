@@ -41,13 +41,13 @@ const Header = styled.header`
     display: flex;
     align-items: center;
     text-decoration: none;
-    color: #0b2154;
+    color: #02353c;
     font-size: 20px;
     font-family: "Nunito", sans-serif;
     svg {
-      color: #eb510d;
+      color: #fff;
       font-size: 40px;
-      background-color: #0b2154;
+      background-color: #3fd0c9;
       border-radius: 5px;
       margin: 10px;
     }
@@ -61,12 +61,12 @@ const Header = styled.header`
 
   .list-links a {
     padding: 0 20px;
-    color: #0b2154;
+    color: #02353c;
     text-decoration: none;
     font-size: 22px;
     font-family: "Nunito", sans-serif;
     &:hover {
-      color: #eb510d;
+      color: #2eaf7d;
       transition: all 0.2s linear;
     }
   }
