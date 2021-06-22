@@ -1,10 +1,20 @@
 import styled from "styled-components";
 import { RiMovie2Line } from "react-icons/ri";
+import { useContext } from "react";
+import { MovieContext } from "./../context/movieContext";
 
 function MovieCardInSearch({ movie }) {
+  const { addMovieToWatchList, watchlist, watched, addMovieToWatched } =
+    useContext(MovieContext);
+
+  let storedMovie = watchlist.find((mov) => mov.id === movie.id);
+  let movieWatched = watched.find((mov) => mov.id === movie.id);
+
+  const watchlistDisabled = storedMovie ? true : movieWatched ? true : false;
+  const watchedDisabled = movieWatched ? true : false;
   return (
     <Wrapper>
-      <SearchCard>
+      <SearchCard style={watchlistDisabled ? { opacity: 0.6 } : { opacity: 1 }}>
         {movie.poster_path ? (
           <img
             src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
@@ -24,8 +34,21 @@ function MovieCardInSearch({ movie }) {
             </span>
           </h1>
           <p>{movie.overview.substring(0, 100)}...</p>
-          <button type="button" className="btn-hover">
-            Add to Watchlist
+          <button
+            type="button"
+            className="btn-hover"
+            disabled={watchlistDisabled}
+            onClick={() => addMovieToWatchList(movie)}
+          >
+            {watchlistDisabled ? "On Your Watchlist" : "Add to Watchlist"}
+          </button>
+          <button
+            type="button"
+            className="btn-hover"
+            disabled={watchedDisabled}
+            onClick={() => addMovieToWatched(movie)}
+          >
+            {watchedDisabled ? "On Your Watched" : "Add to Watched"}
           </button>
         </div>
       </SearchCard>
@@ -140,6 +163,13 @@ const SearchCard = styled.div`
   button.btn-hover.btn-hover:hover:before {
     width: 100%;
     height: 100%;
+  }
+
+  button:disabled,
+  button[disabled] {
+    color: #c5bebe;
+    cursor: not-allowed;
+    pointer-events: none;
   }
 `;
 
