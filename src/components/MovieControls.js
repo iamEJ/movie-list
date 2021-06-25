@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { MovieContext } from "./../context/movieContext";
-import { Link } from "react-router-dom";
+import styled from "styled-components";
+import { BsBookmarkPlus, BsBookmarkDash } from "react-icons/bs";
 
 function MovieControls({ movie, type }) {
   const {
@@ -10,31 +11,49 @@ function MovieControls({ movie, type }) {
     removeMovieFromWatched,
   } = useContext(MovieContext);
   return (
-    <div>
+    <Wrapper>
       {type === "watchlist" && (
         <>
           <button onClick={() => addMovieToWatched(movie)}>
-            add to watched
+            <BsBookmarkPlus /> Watched
           </button>
           <button onClick={() => removeMovieFromWatchlist(movie.id)}>
-            remove
+            <BsBookmarkDash /> Remove
           </button>
-          <Link to={`movie/${movie.id}`}>More</Link>
         </>
       )}
       {type === "watched" && (
         <>
           <button onClick={() => addMovieBackToWatchlist(movie)}>
-            add to watchlist
+            <BsBookmarkPlus /> Watchlist
           </button>
           <button onClick={() => removeMovieFromWatched(movie.id)}>
-            remove
+            <BsBookmarkDash /> Remove
           </button>
-          <Link to={`movie/${movie.id}`}>More</Link>
         </>
       )}
-    </div>
+    </Wrapper>
   );
 }
+
+const Wrapper = styled.section`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 20px;
+  button {
+    margin-right: 10px;
+    display: flex;
+    background: transparent;
+    border: 1px solid transparent;
+    color: #02353c;
+    font-size: 16px;
+    &:hover {
+      color: #2eaf7d;
+      transition: all 0.3s linear;
+      cursor: pointer;
+    }
+  }
+`;
 
 export default MovieControls;

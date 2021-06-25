@@ -105,9 +105,12 @@ const Wrapper = styled.section`
 
   .movie-card {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    background: #fff;
+    border-radius: 5px;
     width: 70%;
     margin-top: 50px;
     padding: 30px 40px;
+    margin-bottom: 20px;
   }
 
   header {
@@ -193,9 +196,7 @@ const Wrapper = styled.section`
 
   .filler-poster {
     width: 200px;
-    height: 280px;
-    margin: 10px;
-    border-radius: 10px;
+    height: 300px;
     background: #3fd0c9;
     display: flex;
     justify-content: center;
