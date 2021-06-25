@@ -4,6 +4,7 @@ import Watched from "./components/Watched";
 import Watchlist from "./components/Watchlist";
 import AddMovie from "./components/AddMovie";
 import HomePage from "./components/Home";
+import SingleMovie from "./components/SingleMovie";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route exact path="/add">
           <AddMovie />
         </Route>
+        <Route exact path="/movie/:id" children={<SingleMovie />} />
       </Switch>
     </Router>
   );

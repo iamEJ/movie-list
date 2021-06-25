@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { MovieContext } from "./../context/movieContext";
+import { Link } from "react-router-dom";
 
 function MovieControls({ movie, type }) {
   const {
@@ -18,6 +19,7 @@ function MovieControls({ movie, type }) {
           <button onClick={() => removeMovieFromWatchlist(movie.id)}>
             remove
           </button>
+          <Link to={`movie/${movie.id}`}>More</Link>
         </>
       )}
       {type === "watched" && (
@@ -28,6 +30,7 @@ function MovieControls({ movie, type }) {
           <button onClick={() => removeMovieFromWatched(movie.id)}>
             remove
           </button>
+          <Link to={`movie/${movie.id}`}>More</Link>
         </>
       )}
     </div>
