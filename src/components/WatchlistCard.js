@@ -7,12 +7,13 @@ function WatchlistCard({ movie, type }) {
   return (
     <Wrapper>
       <div className="image">
-        <div className="circle"></div>
-        {movie.vote_average !== 0 ? (
-          <span>{movie.vote_average}</span>
-        ) : (
-          <span>0.0</span>
-        )}
+        <div className="circle">
+          {movie.vote_average !== 0 ? (
+            <span>{movie.vote_average}</span>
+          ) : (
+            <span>0.0</span>
+          )}
+        </div>
 
         <Link to={`movie/${movie.id}`}>
           {movie.poster_path ? (
@@ -53,12 +54,13 @@ const Wrapper = styled.div`
       height: 40px;
       border-radius: 50%;
       border: 5px solid #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
     span {
       position: absolute;
-      margin-top: 23px;
       font-weight: bold;
-      margin-left: 23px;
       color: #fff;
       font-size: 16px;
     }

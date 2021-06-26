@@ -11,8 +11,8 @@ function Watchlist() {
   return (
     <Wrapper>
       <div className="movies-length">
-        <BsFillBookmarksFill />
         {watchlist.length}
+        <BsFillBookmarksFill />
       </div>
       {watchlist.length > 0 ? (
         <div>
@@ -42,11 +42,9 @@ const Wrapper = styled.section`
 
   .movies-length {
     svg {
-      margin-right: -5px;
+      font-size: 36px;
     }
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: inline-block;
     color: #3fd0c9;
     font-size: 50px;
     bottom: 10px;
