@@ -10,6 +10,7 @@ function SingleMovie() {
 
   useEffect(() => {
     getSingleMovieInfo();
+    // eslint-disable-next-line
   }, []);
 
   const getSingleMovieInfo = async () => {
