@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import tmdb from "./../tmdb.svg";
 
 function Home() {
   return (
@@ -11,6 +12,7 @@ function Home() {
       <Link to="/add">
         <span>Start Now </span>
       </Link>
+      <img src={tmdb} alt="tmdb" />
     </Wrapper>
   );
 }
@@ -67,6 +69,13 @@ const Wrapper = styled.main`
   a:hover span:after {
     opacity: 1;
     right: 0;
+  }
+
+  img {
+    bottom: 10px;
+    right: 10px;
+    position: fixed;
+    width: 200px;
   }
 `;
 
